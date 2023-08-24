@@ -1,6 +1,7 @@
-
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -21,15 +22,15 @@ module.exports = {
           loader: 'babel-loader',
           options:
             {
-                presets: ["@babel/preset-react", "@babel/preset-env"]
-              }
+              presets: ['@babel/preset-react', '@babel/preset-env']
+            },
         },
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
           },
         ],
       },
@@ -42,7 +43,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      icons : path.resolve(__dirname, 'src/icons'),
+      icons: path.resolve(__dirname, 'src/icons'),
     },
   },
 };

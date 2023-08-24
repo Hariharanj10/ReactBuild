@@ -1,14 +1,14 @@
 import React from 'react';
-import Sample from 'icons/Sample.js';
+import Sample from './icons/Sample';
 
-const App = () => {
+function App() {
   return (
     <div>
       <h1>React Webpack App</h1>
-    
-    <Sample></Sample>
+
+      <Sample />
     </div>
   );
-};
+}
 
 export default App;
