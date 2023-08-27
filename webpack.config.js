@@ -1,17 +1,17 @@
-const path = require('path');
+const path = require("path");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  mode: "development",
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.[contenthash].js',
-    path: path.resolve(__dirname, 'build'),
+    filename: "bundle.[contenthash].js",
+    path: path.resolve(__dirname, "build"),
     clean: true,
   },
   devServer: {
-    static: './build',
+    static: "./build",
   },
   module: {
     rules: [
@@ -19,18 +19,25 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options:
-            {
-              presets: ['@babel/preset-react', '@babel/preset-env']
-            },
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react", "@babel/preset-env"],
+          },
         },
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
+          },
+          {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader", "sass-loader"],
+          },
+          {
+            test: /\.scss$/,
+            use: ["style-loader", "css-loader", "sass-loader"],
           },
         ],
       },
@@ -38,12 +45,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
   ],
   resolve: {
     alias: {
-      icons: path.resolve(__dirname, 'src/icons'),
+      icons: path.resolve(__dirname, "src/icons"),
     },
   },
 };
